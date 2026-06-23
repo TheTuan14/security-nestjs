@@ -5,4 +5,13 @@ export declare class AppController {
         cookie: any;
     };
     clearCookie(res: Response): Response<any, Record<string, any>>;
+    setSession(req: any): {
+        message: string;
+    };
+    getSession(req: any): {
+        username: any;
+    };
+    destroySession(req: any): {
+        message: string;
+    };
 }

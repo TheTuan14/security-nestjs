@@ -29,6 +29,17 @@ let AppController = class AppController {
         res.clearCookie('my_cookie');
         return res.json({ message: 'Cookie da xoa!' });
     }
+    setSession(req) {
+        req.session.username = 'sinh_vien_abc';
+        return { message: 'Session da set!' };
+    }
+    getSession(req) {
+        return { username: req.session.username || 'Chua co session' };
+    }
+    destroySession(req) {
+        req.session.destroy();
+        return { message: 'Session da xoa!' };
+    }
 };
 exports.AppController = AppController;
 __decorate([
@@ -52,6 +63,27 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "clearCookie", null);
+__decorate([
+    (0, common_1.Get)('session/set'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "setSession", null);
+__decorate([
+    (0, common_1.Get)('session/get'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "getSession", null);
+__decorate([
+    (0, common_1.Get)('session/destroy'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "destroySession", null);
 exports.AppController = AppController = __decorate([
     (0, common_1.Controller)()
 ], AppController);
